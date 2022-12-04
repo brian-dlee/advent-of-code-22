@@ -31,6 +31,6 @@ func ReadInputLinesOrPanic(path string) []string {
 	if content, err := os.ReadFile(path); err != nil {
 		panic(err)
 	} else {
-		return strings.Split(string(content), "\n")
+		return strings.Split(strings.TrimSpace(string(content)), "\n")
 	}
 }
