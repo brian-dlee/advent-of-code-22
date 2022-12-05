@@ -9,7 +9,9 @@ s1|s2|s3|input) ;;
 *) echo "invalid input type: $t. provide s1, s2, s3, or input." >&2; exit 1;;
 esac
 
-mkdir "data/d${d}"
+if [[ ! -e "data/d${d}" ]]; then
+  mkdir "data/d${d}"
+fi
 
 pbpaste >"data/d${d}/${p}.${t}.txt"
 

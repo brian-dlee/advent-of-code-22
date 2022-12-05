@@ -28,9 +28,21 @@ func GetInputFile(day int, part Part, file InputFile) string {
 }
 
 func ReadInputLinesOrPanic(path string) []string {
-	if content, err := os.ReadFile(path); err != nil {
+	content, err := os.ReadFile(path)
+	if err != nil {
 		panic(err)
-	} else {
-		return strings.Split(strings.TrimSpace(string(content)), "\n")
 	}
+
+	lines := strings.Split(string(content), "\n")
+	strip := 0
+
+	for len(lines)-strip-1 > 0 {
+		if strings.TrimSpace(lines[len(lines)-strip-1]) == "" {
+			strip += 1
+		} else {
+			break
+		}
+	}
+
+	return lines[0:len(lines)-strip]
 }
