@@ -21,7 +21,7 @@ func NewRockPaperScissorsFromStrings(matches []string) RockPaperScissors {
 }
 
 type Round struct {
-	Outcome string
+	Outcome  string
 	Opponent string
 }
 
@@ -31,14 +31,22 @@ func NewRoundFromString(data string) Round {
 }
 
 func (r *Round) winScore() int {
-	if r.Outcome == "X" { return 0 }
-	if r.Outcome == "Y" { return 3 }
+	if r.Outcome == "X" {
+		return 0
+	}
+	if r.Outcome == "Y" {
+		return 3
+	}
 	return 6
 }
 
 func (r *Round) shapeScore(shape string) int {
-	if shape == "X" { return 1 }
-	if shape == "Y" { return 2 }
+	if shape == "X" {
+		return 1
+	}
+	if shape == "Y" {
+		return 2
+	}
 	return 3
 }
 
@@ -50,15 +58,33 @@ func (r *Round) Score() int {
 	aS := r.Opponent == "C"
 	win := r.winScore()
 
-	if win == 6 && aR { shape = "Y" }
-	if win == 6 && aP { shape = "Z" }
-	if win == 6 && aS { shape = "X" }
-	if win == 3 && aR { shape = "X" }
-	if win == 3 && aP { shape = "Y" }
-	if win == 3 && aS { shape = "Z" }
-	if win == 0 && aR { shape = "Z" }
-	if win == 0 && aP { shape = "X" }
-	if win == 0 && aS { shape = "Y" }
+	if win == 6 && aR {
+		shape = "Y"
+	}
+	if win == 6 && aP {
+		shape = "Z"
+	}
+	if win == 6 && aS {
+		shape = "X"
+	}
+	if win == 3 && aR {
+		shape = "X"
+	}
+	if win == 3 && aP {
+		shape = "Y"
+	}
+	if win == 3 && aS {
+		shape = "Z"
+	}
+	if win == 0 && aR {
+		shape = "Z"
+	}
+	if win == 0 && aP {
+		shape = "X"
+	}
+	if win == 0 && aS {
+		shape = "Y"
+	}
 
 	return win + r.shapeScore(shape)
 }

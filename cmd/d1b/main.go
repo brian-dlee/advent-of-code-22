@@ -8,19 +8,19 @@ import (
 )
 
 type ElfBackpack struct {
-	Total int
+	Total  int
 	Number int
 }
 
 type RankedElves struct {
 	Elves []*ElfBackpack
-	Size int
+	Size  int
 }
 
 func NewRankedElves(size int) RankedElves {
 	return RankedElves{
 		Elves: make([]*ElfBackpack, 0),
-		Size: size,
+		Size:  size,
 	}
 }
 
@@ -56,7 +56,7 @@ func (r *RankedElves) Swap(i, j int) {
 	r.Elves[j] = tmp
 }
 
-func (r *RankedElves) Submit(elf *ElfBackpack)  {
+func (r *RankedElves) Submit(elf *ElfBackpack) {
 	r.Elves = append(r.Elves, elf)
 
 	sort.Sort(sort.Reverse(r))

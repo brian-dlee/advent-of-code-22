@@ -38,7 +38,7 @@ func NewAssignmentPairFromString(data string) (*AssignmentPair, error) {
 
 type Assignment struct {
 	Start int
-	End int
+	End   int
 }
 
 func NewAssignmentFromString(data string) (*Assignment, error) {

@@ -21,7 +21,7 @@ func NewRockPaperScissorsFromStrings(matches []string) RockPaperScissors {
 }
 
 type Round struct {
-	Me string
+	Me       string
 	Opponent string
 }
 
@@ -37,20 +37,36 @@ func (r *Round) WinScore() int {
 	aP, bP := a == "Y", b == "B"
 	aS, bS := a == "Z", b == "C"
 
-	if aR && bS { return 6 }
-	if aP && bR { return 6 }
-	if aS && bP { return 6 }
+	if aR && bS {
+		return 6
+	}
+	if aP && bR {
+		return 6
+	}
+	if aS && bP {
+		return 6
+	}
 
-	if aR && bR { return 3 }
-	if aP && bP { return 3 }
-	if aS && bS { return 3 }
+	if aR && bR {
+		return 3
+	}
+	if aP && bP {
+		return 3
+	}
+	if aS && bS {
+		return 3
+	}
 
 	return 0
 }
 
 func (r *Round) ShapeScore() int {
-	if r.Me == "X" { return 1 }
-	if r.Me == "Y" { return 2 }
+	if r.Me == "X" {
+		return 1
+	}
+	if r.Me == "Y" {
+		return 2
+	}
 	return 3
 }
 

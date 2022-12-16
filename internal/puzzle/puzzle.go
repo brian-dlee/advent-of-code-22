@@ -9,16 +9,19 @@ import (
 
 const (
 	PART_A Part = "a"
-	PART_B = "b"
+	PART_B      = "b"
 )
 
 type Part string
 
 const (
 	FILE_S1 InputFile = "s1"
-	FILE_S2 = "s2"
-	FILE_S3 = "s3"
-	FILE_IN = "input"
+	FILE_R1           = "r1"
+	FILE_R2           = "r2"
+	FILE_R3           = "r3"
+	FILE_S2           = "s2"
+	FILE_S3           = "s3"
+	FILE_IN           = "input"
 )
 
 type InputFile string
@@ -44,5 +47,5 @@ func ReadInputLinesOrPanic(path string) []string {
 		}
 	}
 
-	return lines[0:len(lines)-strip]
+	return lines[0 : len(lines)-strip]
 }

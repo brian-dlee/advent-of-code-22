@@ -7,7 +7,7 @@ import (
 )
 
 type ElfBackpack struct {
-	Total int
+	Total  int
 	Number int
 }
 

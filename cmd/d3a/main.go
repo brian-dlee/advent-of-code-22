@@ -22,18 +22,18 @@ func ItemTypeToPriority(item string) (int, error) {
 	value := []rune(item)[0]
 
 	if value >= 'a' && value <= 'z' {
-		println(item, "is", int(value - 'a' + 1))
+		println(item, "is", int(value-'a'+1))
 		return int(value - 'a' + 1), nil
 	}
 
-	println(item, "is", int(value - 'A' + 27))
+	println(item, "is", int(value-'A'+27))
 	return int(value - 'A' + 27), nil
 }
 
 func NewRuckSackFromString(data string) RuckSack {
 	return RuckSack{
-		CompartmentOne: data[0:len(data) / 2],
-		CompartmentTwo: data[len(data) / 2:],
+		CompartmentOne: data[0 : len(data)/2],
+		CompartmentTwo: data[len(data)/2:],
 	}
 }
 
@@ -81,7 +81,6 @@ func main() {
 			total += priority
 		}
 	}
-
 
 	println("total of priorities:", total)
 }

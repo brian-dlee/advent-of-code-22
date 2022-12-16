@@ -10,8 +10,8 @@ const puzzleInputPart = puzzle.PART_A
 const puzzleInputFile = puzzle.FILE_IN
 
 type ElfGroup struct {
-	SackOne string
-	SackTwo string
+	SackOne   string
+	SackTwo   string
 	SackThree string
 }
 
@@ -23,18 +23,18 @@ func ItemTypeToPriority(item string) (int, error) {
 	value := []rune(item)[0]
 
 	if value >= 'a' && value <= 'z' {
-		println(item, "is", int(value - 'a' + 1))
+		println(item, "is", int(value-'a'+1))
 		return int(value - 'a' + 1), nil
 	}
 
-	println(item, "is", int(value - 'A' + 27))
+	println(item, "is", int(value-'A'+27))
 	return int(value - 'A' + 27), nil
 }
 
 func NewRuckSackFromStrings(one, two, three string) ElfGroup {
 	return ElfGroup{
-		SackOne: one,
-		SackTwo: two,
+		SackOne:   one,
+		SackTwo:   two,
 		SackThree: three,
 	}
 }

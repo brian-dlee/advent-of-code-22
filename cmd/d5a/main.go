@@ -54,7 +54,7 @@ func (s *Stack) Peek() string {
 func (s *Stack) Pop() string {
 	if len(s.Containers) > 0 {
 		result := s.Containers[len(s.Containers)-1]
-		s.Containers = s.Containers[0:len(s.Containers)-1]
+		s.Containers = s.Containers[0 : len(s.Containers)-1]
 		return result
 	}
 
@@ -62,14 +62,14 @@ func (s *Stack) Pop() string {
 }
 
 type Move struct {
-	Count int
+	Count  int
 	Source int
 	Target int
 }
 
 type CraneMap struct {
 	Stacks []*Stack
-	Moves []*Move
+	Moves  []*Move
 }
 
 func NewCraneMapFromLines(stackCount int, stackRows []string, moveRows []string) (*CraneMap, error) {
@@ -90,7 +90,7 @@ func NewCraneMapFromLines(stackCount int, stackRows []string, moveRows []string)
 	for i < len(stackRows) {
 		stack := 0
 		cursor := 0
-		line := stackRows[len(stackRows) - 1 - i]
+		line := stackRows[len(stackRows)-1-i]
 
 		log.Default().Printf("building CraneMap: parsing containers from line - stackLineNumber=%d, stackLine=`%s`", i+1, line)
 
@@ -120,7 +120,6 @@ func NewCraneMapFromLines(stackCount int, stackRows []string, moveRows []string)
 		craneMap.Moves = append(craneMap.Moves, &Move{})
 
 		result := moveRegex.FindAllStringSubmatch(move, -1)
-
 
 		if len(result) != 1 {
 			return nil, fmt.Errorf("failed to create CraneMap: move instruction %d is invalid in '%s' - match count should be 1, got %d", i+1, move, len(result))
@@ -238,7 +237,7 @@ func main() {
 
 func determineStackCountByLabelsLine(line string) int {
 	charactersInEachLabel := 4.0
-	lengthWithCompleteFinalLabel := len(line)+1
+	lengthWithCompleteFinalLabel := len(line) + 1
 
 	return int(math.Floor(float64(lengthWithCompleteFinalLabel) / charactersInEachLabel))
 }
@@ -261,7 +260,7 @@ func dump(title string, stacks []*Stack) {
 				fmt.Printf(" %s ", stack.Containers[row])
 			}
 
-			if i == len(stacks) - 1 {
+			if i == len(stacks)-1 {
 				fmt.Printf("\n")
 			} else {
 				fmt.Printf(" ")
